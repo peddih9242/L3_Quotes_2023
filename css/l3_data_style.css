@@ -46,8 +46,8 @@ body {
 
 .main {
     grid-area: main;
-    background-color: #eee;  /* very pale grey */
-    border: solid 1px #CCC;
+    background-color: #ffd98e;  /* very pale preach */
+    border: solid 1px #d68b00; /* dark orange border */
 }
 
 
@@ -89,13 +89,9 @@ body {
 /* Area colouring... */
 
 /* logo, banner and footer background are the same */
-.logo, .banner, .footer {
-    background-color: #888;  /* dark grey */
-}
-
-/* Set font on dark areas to white */
-.logo, .banner, .side, .footer {
-    color: #fff;
+.banner, .footer {
+    background-color: #ddd;  /* light grey */
+    border: solid 1px #bbb;
 }
 
 /* #### Links Styling  #### */
