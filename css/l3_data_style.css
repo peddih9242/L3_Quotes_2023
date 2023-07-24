@@ -8,6 +8,7 @@ body {
 /* Box (for corners & padding) */
 .box {
     padding-left: 20px;
+    padding-right: 20px;
     /* border-radius: 10px; */
     background-color: #ddd;
 }
@@ -111,6 +112,24 @@ a:hover{color: #707a00;}    /* Dark Green*/
 /* #### Headings / text styling #### */
 h1, h2, h3, h4 {
     font-family: 'Ubuntu', sans-serif;
+}
+
+.results {
+    background-color: #fff;
+    border: 1px solid #d68b00;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.tag {
+    background-color: bisque;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid 1px #000;
+    border-radius: 5px;
 }
 
 .sub_heading {
