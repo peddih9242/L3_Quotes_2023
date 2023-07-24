@@ -170,3 +170,29 @@ input {
     display: inline-block;
 }
 
+
+/* media queries */
+
+@media only screen and (max-width: 750px) {
+    .linkwrapper {
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas:
+        "commonsearches topadmin"
+        "topsearch topsearch";
+    }
+
+    /* adjust alignment of header on small screens */
+    .commonsearches {
+        text-align: left;
+    }
+
+    .topsearch {
+        width: 100%;
+        text-align: left;
+    }
+    
+    .topadmin {
+        text-align: right;
+    }
+}

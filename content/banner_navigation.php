@@ -8,7 +8,7 @@
 
 <div class="linkwrapper">
     <div class="commonsearches">
-        <a href="#l">All Quotes</a> | 
+        <a href="index.php?page=all_results">All Quotes</a> | 
         <a href="#">Recent</a> | 
         <a href="#">Random</a> 
     </div>  <!-- / common searches -->
