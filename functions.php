@@ -8,6 +8,35 @@ function test_input($data) {
 }
 
 
+function get_data($dbconnect, $more_condition=null) {
 
+$find_sql = "SELECT
 
+q.*,
+a.*,
+s1.Subject AS Subject1,
+s2.Subject AS Subject2,
+s3.Subject AS Subject3
+
+FROM
+quotes q
+
+JOIN author a ON a.Author_ID = q.Author_ID
+JOIN all_subjects s1 ON q.Subject1_ID = s1.Subject_ID
+JOIN all_subjects s2 ON q.Subject2_ID = s2.Subject_ID
+JOIN all_subjects s3 ON q.Subject3_ID = s3.Subject_ID
+
+";
+// if we have a WHERE condition, add it to the sql
+if($more_condition != null) {
+	// add extra string onto sql
+	$find_sql .= $more_condition;
+}
+
+$find_query = mysqli_query($dbconnect, $find_sql);
+$find_rs = mysqli_fetch_assoc($find_query);
+$find_count = mysqli_num_rows($find_query);
+
+return $find_rs_count = array($find_query, $find_rs, $find_count);
+}
 ?>

@@ -1,25 +1,10 @@
 <?php
 
-$find_sql = "SELECT
+$all_results = get_data($dbconnect);
 
-q.*,
-a.*,
-s1.Subject AS Subject1,
-s2.Subject AS Subject2,
-s3.Subject AS Subject3
-
-FROM
-quotes q
-
-JOIN author a ON a.Author_ID = q.Author_ID
-JOIN all_subjects s1 ON q.Subject1_ID = s1.SubjectID
-JOIN all_subjects s2 ON q.Subject2_ID = s2.SubjectID
-JOIN all_subjects s3 ON q.Subject3_ID = s3.SubjectID
-
-";
-$find_query = mysqli_query($dbconnect, $find_sql);
-$find_rs = mysqli_fetch_assoc($find_query);
-$find_count = mysqli_num_rows($find_query);
+$find_query = $all_results[0];
+$find_rs = $all_results[1];
+$find_count = $all_results[2];
 
 ?>
 

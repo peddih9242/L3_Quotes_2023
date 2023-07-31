@@ -8,9 +8,9 @@
 
 <div class="linkwrapper">
     <div class="commonsearches">
-        <a href="index.php?page=all_results">All Quotes</a> | 
-        <a href="#">Recent</a> | 
-        <a href="#">Random</a> 
+        <a href="index.php?page=all_results&search=all">All Quotes</a> | 
+        <a href="index.php?page=all_results&search=recent">Recent</a> | 
+        <a href="index.php?page=all_results&search=random">Random</a> 
     </div>  <!-- / common searches -->
 
     <div class="topsearch">

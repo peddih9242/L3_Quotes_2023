@@ -138,6 +138,12 @@ h1, h2, h3, h4 {
     font-weight: bold;
 }
 
+.no-results {
+    padding: 5px;
+    background-color: #ffbbbb;
+    border: solid 1px #a40f0f;
+}
+
 /* ### Form / Search  Styling #### */
 
 form {
