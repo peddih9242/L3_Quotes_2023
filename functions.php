@@ -34,9 +34,8 @@ if($more_condition != null) {
 }
 
 $find_query = mysqli_query($dbconnect, $find_sql);
-$find_rs = mysqli_fetch_assoc($find_query);
 $find_count = mysqli_num_rows($find_query);
 
-return $find_rs_count = array($find_query, $find_rs, $find_count);
+return $find_query_count = array($find_query, $find_count);
 }
 ?>
