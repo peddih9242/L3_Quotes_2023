@@ -4,7 +4,7 @@
 $search_type = $_REQUEST['search'];
 
 if ($search_type == "all") {
-    $heading = "All Results";
+    $heading = "All Quotes";
     $sql_conditions = "";
 }
 elseif ($search_type == "recent") {
@@ -52,7 +52,11 @@ $heading = "<h2>$heading ($find_count $result_s)</h2>";
 
 elseif ($heading_type == "author") {
     // retrieve author name
-    $author_name = "Someone";
+    $author_rs = get_item_name($dbconnect, "author", "Author_ID", $author_ID);
+    $author_name = $author_rs['First']." ".$author_rs['Middle']." ".$author_rs['Last'];
+
+    $heading = "<h2>$author_name Quotes ($find_count $result_s)</h2>";
+
 }
 echo $heading;
 ?>
