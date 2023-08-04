@@ -26,6 +26,20 @@ elseif ($search_type == "author") {
     $sql_conditions = "WHERE q.Author_ID = $author_ID";
 }
 
+elseif ($search_type == "subject") {
+    // retrieve subject ID
+    $subject_name = $_REQUEST['subject_name'];
+
+    $heading = "";
+    $heading_type = "subject";
+
+    ?>
+        <p><?php echo $subject_name ?></p>
+    <?php
+
+    $sql_conditions = "WHERE s1.Subject LIKE $subject_name";
+}
+
 else {
     $heading = "No Results";
     $sql_conditions = "WHERE q.ID = 1000";
@@ -58,6 +72,12 @@ elseif ($heading_type == "author") {
     $heading = "<h2>$author_name Quotes ($find_count $result_s)</h2>";
 
 }
+
+elseif ($heading_type == "subject") {
+
+    $heading = "<h2>$subject_name Quotes ($find_count $result_s)</h2>";
+}
+
 echo $heading;
 ?>
 
@@ -102,7 +122,14 @@ while($find_rs = mysqli_fetch_assoc($find_query)) {
         foreach($all_subjects as $subject) {
             // check if subject is n/a
             if($subject != "n/a") {
-                echo "<span class='tag'>$subject</span>&nbsp;&nbsp;";
+                ?>
+                <span class="tag">
+                    <a href="index.php?page=all_results&search=subject&subject_name=<?php echo $subject ?>">
+                        <?php echo $subject ?>
+                    </a>
+                </span>
+                &nbsp;&nbsp;
+                <?php
             }
 
         }
