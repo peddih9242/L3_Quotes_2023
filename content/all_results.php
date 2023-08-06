@@ -33,11 +33,9 @@ elseif ($search_type == "subject") {
     $heading = "";
     $heading_type = "subject";
 
-    ?>
-        <p><?php echo $subject_name ?></p>
-    <?php
-
-    $sql_conditions = "WHERE s1.Subject LIKE $subject_name";
+    $sql_conditions = "WHERE s1.Subject LIKE '$subject_name'
+                        OR s2.Subject LIKE '$subject_name'
+                        OR s3.Subject LIKE '$subject_name'";
 }
 
 else {
@@ -75,7 +73,8 @@ elseif ($heading_type == "author") {
 
 elseif ($heading_type == "subject") {
 
-    $heading = "<h2>$subject_name Quotes ($find_count $result_s)</h2>";
+    $title_subject = ucwords($subject_name);
+    $heading = "<h2>$title_subject Quotes ($find_count $result_s)</h2>";
 }
 
 echo $heading;
@@ -111,7 +110,7 @@ while($find_rs = mysqli_fetch_assoc($find_query)) {
         <?php echo $quote ?>
 
         <p><i>
-            <a href="index.php?page=all_results&search=author&Author_ID=<?php echo $author_ID ?>">
+            <a href="index.php?page=all_rauthor&Author_ID=<?php echo $author_ID ?>"esults&search=>
             <?php echo $author_full ?>
             </a>
         </i></p>
