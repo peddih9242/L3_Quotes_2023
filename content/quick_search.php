@@ -7,7 +7,8 @@ $search_term = $_REQUEST['quick_search'];
 // set up searches...
 $quote_search = "q.Quote LIKE '%$search_term%'";
 
-$author_search ="CONCAT(a.First, ' ', a.Middle, ' ', a.Last) LIKE";
+$author_search = "CONCAT(a.First, ' ', a.Middle, ' ', a.Last) LIKE '%$search_term%'
+                    OR CONCAT(a.First, ' ', a.Last) LIKE '%$search_term%'";
 
 $subject_search = "s1.Subject LIKE '%$search_term%'
                     OR s2.Subject LIKE '%$search_term%'
