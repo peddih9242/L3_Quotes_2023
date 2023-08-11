@@ -6,9 +6,13 @@
 
     if (isset($_GET['error'])) {
         ?>
+        
+        <span class="error">
+            <?php echo $_GET['error'] ?>
+        </span>
 
         <?php
-    } // end of get errorif
+    } // end of get error if
 
     ?>
 
