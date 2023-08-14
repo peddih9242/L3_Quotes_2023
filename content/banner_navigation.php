@@ -34,8 +34,31 @@
     </div>  <!-- / top search -->
     
     <div class="topadmin">
+
+    <?php
+
+        if(isset($_SESSION['admin'])) {
+
+            ?>
+
+            <a href="index.php?page=../admin/add_quote">Add Quote</a>
+            &nbsp;&nbsp;
+            <a href="index.php?page=../admin/logout">Log Out</a>
+
+            <?php
+
+        } // end admin if
+
+        else {
+    
+        ?>
+
         <a href="index.php?page=../admin/login">Log In</a>
         
+        <?php
+        } // end not admin else
+        ?>
+
     </div>  <!-- / top admin -->
     
 </div>  <!--- / link wrapper -->

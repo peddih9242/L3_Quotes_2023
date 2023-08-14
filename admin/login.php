@@ -1,6 +1,6 @@
 <form action="index.php?page=../admin/adminlogin" method="post">
-    <p>Username: <input name="username" /></p>
-    <p>Password: <input name="password" type="password" /></p>
+    <p>Username: <input name="username" required /></p>
+    <p>Password: <input name="password" type="password" required /></p>
 
     <?php
 
