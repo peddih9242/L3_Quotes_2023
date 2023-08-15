@@ -14,8 +14,8 @@ if(isset($_REQUEST['login'])) {
 if ($login_rs == NULL) {
     echo 'invalid username';
     unset($_SESSION);
-    $login_error = "Incorrect username / password";
-    header("Location: index.php?page=../admin/login&error=$login_error")
+    $login_error = "Incorrect username";
+    header("Location: index.php?page=../admin/login&error=$login_error");
 }
 
 else {
@@ -34,6 +34,9 @@ header("Location: index.php?page=../admin/add_quote");
 else {
 
 echo 'invalid password';
+unset($_SESSION);
+$login_error = "Incorrect password";
+header("Location: index.php?page=../admin/login&error=$login_error");
 
 } // end invalid password else
 

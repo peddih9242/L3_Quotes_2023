@@ -1,6 +1,10 @@
+<div class="admin-form">
+
+<h2>Login</h2>
+
 <form action="index.php?page=../admin/adminlogin" method="post">
-    <p>Username: <input name="username" required /></p>
-    <p>Password: <input name="password" type="password" required /></p>
+    <p><input name="username" placeholder="Username" required /></p>
+    <p><input name="password" placeholder="Password" type="password" required /></p>
 
     <?php
 
@@ -16,5 +20,7 @@
 
     ?>
 
-    <p><input type="submit" name="login" value="Log In" /></p>
+    <p><input class="form-submit" type="submit" name="login" value="Log In" /></p>
 </form>
+
+</div> <!-- / admin-form -->

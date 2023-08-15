@@ -1,7 +1,7 @@
 <?php
 
 // retrieve search type...
-$search_type = $_REQUEST['search'];
+$search_type = clean_input($dbconnect, $_REQUEST['search']);
 
 if ($search_type == "all") {
     $heading = "All Quotes";

@@ -82,7 +82,22 @@ while($find_rs = mysqli_fetch_assoc($find_query)) {
                 </span>
                 &nbsp;&nbsp;
                 <?php
-            }
+            } // end subject exists iff
+
+        } // end listing subjects
+
+        // if user is logged in, show edit / delete options
+
+        if (isset($_SESSION['admin'])) {
+
+            ?>
+
+            <div class="tools">
+                <a href="#"><i class="fa fa-edit fa-2x"></i></a> &nbsp;&nbsp;
+                <a href="#"><i class="fa fa-trash fa-2x"></i></a>
+            </div>
+
+            <?php
 
         }
 

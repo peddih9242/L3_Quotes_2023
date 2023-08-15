@@ -1,9 +1,11 @@
 <?php 
 
 // function to 'clean' data
-function test_input($data) {
+function clean_input($dbconnect, $data) {
 	$data = trim($data);	
 	$data = htmlspecialchars($data); //  needed for correct special character rendering
+	// remove dodgy characters to prevent SQL injections
+	$data = mysqli_real_escape_string($dbconnect, $data);
 	return $data;
 }
 
@@ -49,4 +51,24 @@ function get_item_name($dbconnect, $table, $column, $ID) {
 
 	return $find_rs;
 }
+
+// entity is subject / full name of author
+function autocomplete_list($dbconnect, $item_sql, $entity)    
+{
+// Get entity / topic list from database
+$all_items_query = mysqli_query($dbconnect, $item_sql);
+    
+// Make item arrays for autocomplete functionality...
+while($row=mysqli_fetch_array($all_items_query))
+{
+  $item=$row[$entity];
+  $items[] = $item;
+}
+
+$all_items=json_encode($items);
+return $all_items;
+    
+}
+
+
 ?>
