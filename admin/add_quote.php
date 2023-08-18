@@ -14,6 +14,10 @@ $tag_3 = "";
 // initialise tag IDs
 $tag_1_ID = $tag_2_ID = $tag_3_ID = 0;
 
+// get author full name from database
+$author_full_sql = "SELECT *, CONCAT(First, ' ', Middle, ' ', Last) AS Full_Name FROM author";
+$all_authors = autocomplete_list($dbconnect, $author_full_sql, 'Full_Name');
+
 ?>
 
 <h2>Add Quote</h2>
@@ -21,9 +25,12 @@ $tag_1_ID = $tag_2_ID = $tag_3_ID = 0;
 <div class="admin-form">
     <h1>Add a Quote</h1>
 
-    <form>
+    <form action="index.php?page=../admin/insert_quote" method="post">
         <p><textarea name="quote" placeholder="Quote (required)" required></textarea></p>
-        <p><input name="author" placeholder="Author Name (First Middle Last)"/></p>
+        
+        <div class="autocomplete">
+            <input name="author_full" id="author_full" placeholder="Author Name (First Middle Last)"/></p>
+        </div>
         
         <div class="autocomplete">
             <input name="subject1" id="subject1" placeholder="Subject 1 (required)" required /></p>
@@ -52,6 +59,9 @@ $tag_1_ID = $tag_2_ID = $tag_3_ID = 0;
         autocomplete(document.getElementById("subject1"), all_tags);
         autocomplete(document.getElementById("subject2"), all_tags);
         autocomplete(document.getElementById("subject3"), all_tags);
+        
+        var all_author = <?php print("$all_authors") ?>;
+        autocomplete(document.getElementById("author_full"), all_author);
 
     </script>
 

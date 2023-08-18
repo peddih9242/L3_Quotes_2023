@@ -1,8 +1,8 @@
 <?php
 
 // retrieve search type...
-$search_type = $_REQUEST['search_type'];
-$search_term = $_REQUEST['quick_search'];
+$search_type = clean_input($dbconnect, $_REQUEST['search_type']);
+$search_term = clean_input($dbconnect, $_REQUEST['quick_search']);
 
 // set up searches...
 $quote_search = "q.Quote LIKE '%$search_term%'";

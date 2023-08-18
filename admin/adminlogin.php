@@ -3,7 +3,7 @@
 if(isset($_REQUEST['login'])) {
 
     // get username from form
-    $username = $_REQUEST['username'];
+    $username = clean_input($dbconnect, $_REQUEST['username']);
     $options = ['cost' => 9,];
 
     // Get username and hashed password from database
