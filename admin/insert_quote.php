@@ -39,7 +39,7 @@ if (isset($_SESSION['admin'])) {
     
     // statement to insert subject/s
     $stmt = $dbconnect -> prepare("INSERT INTO `all_subjects` (`Subject`)
-    VALUES ('?');");
+    VALUES (?);");
 
     foreach ($subjects as $subject) {
         $subjectID = get_search_ID($dbconnect, $subject);
@@ -57,7 +57,48 @@ if (isset($_SESSION['admin'])) {
         $subject_IDs[] = $subjectID;
     }
 
-    print_r($subject_IDs);
+    // retrieve subject ids
+    $subject_ID_1 = $subject_IDs[0];
+    $subject_ID_2 = $subject_IDs[1];
+    $subject_ID_3 = $subject_IDs[2];
+
+    // check to see if author exists
+    $find_author_id = "SELECT * FROM author a WHERE
+    CONCAT(a.First, ' ', a.Middle, ' ', a.Last) LIKE '%$author_full%'
+    OR CONCAT(a.First, ' ', a.Last) LIKE '%$author_full%'";
+    $find_author_query = mysqli_query($dbconnect, $find_author_id);
+    $find_author_rs = mysqli_fetch_assoc($find_author_query);
+    $find_author_count = mysqli_num_rows($find_author_query);
+
+    // retrieve author ID if author exists
+    if ($author_count > 0) {
+        $author_ID = $find_author_rs['Author_ID'];
+    }
+
+    else {
+        // split author name and add to DB
+        $names = explode(' ', $author_full);
+
+        if(count($names) > 1) {
+            $first = $names[0];
+            $last = $names[count($names) - 1];
+        }
+
+        elseif (count($names) == 1) {
+            $first = $names[0];
+        }
+
+        // check if a middle name exists
+        if (count($names) > 2) {
+            $middle = implode(' ', array_slice($names, 1, -1));
+        }
+    } // end name split else
+
+// add name to DB
+$stmt = $dbconnect -> prepare("INSERT INTO `author` (`First`, `Middle`, `Last`) VALUES (?, ?, ?);");
+$stmt -> bind_param("sss", $first, $middle, $last);
+$stmt -> execute();
+
 
     } // submit if
 
