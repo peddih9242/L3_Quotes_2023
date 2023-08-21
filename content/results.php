@@ -39,7 +39,8 @@ echo $heading;
 while($find_rs = mysqli_fetch_assoc($find_query)) {
 
     $quote = $find_rs['Quote'];
-    
+    $ID = $find_rs['ID'];
+
     $author_first = $find_rs['First'];
     $author_middle = $find_rs['Middle'];
     $author_last = $find_rs['Last'];
@@ -82,7 +83,7 @@ while($find_rs = mysqli_fetch_assoc($find_query)) {
                 </span>
                 &nbsp;&nbsp;
                 <?php
-            } // end subject exists iff
+            } // end subject exists if
 
         } // end listing subjects
 
@@ -93,8 +94,8 @@ while($find_rs = mysqli_fetch_assoc($find_query)) {
             ?>
 
             <div class="tools">
-                <a href="#"><i class="fa fa-edit fa-2x"></i></a> &nbsp;&nbsp;
-                <a href="#"><i class="fa fa-trash fa-2x"></i></a>
+                <a href="index.php?page=../admin/editquote&ID=<?php echo $ID ?>"><i class="fa fa-edit fa-2x"></i></a> &nbsp;&nbsp;
+                <a href="index.php?page=../admin/deleteconfirm&ID=<?php echo $ID ?>"><i class="fa fa-trash fa-2x"></i></a>
             </div>
 
             <?php

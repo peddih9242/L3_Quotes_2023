@@ -71,7 +71,7 @@ if (isset($_SESSION['admin'])) {
     $find_author_count = mysqli_num_rows($find_author_query);
 
     // retrieve author ID if author exists
-    if ($author_count > 0) {
+    if ($find_author_count > 0) {
         $author_ID = $find_author_rs['Author_ID'];
     }
 
@@ -92,15 +92,30 @@ if (isset($_SESSION['admin'])) {
         if (count($names) > 2) {
             $middle = implode(' ', array_slice($names, 1, -1));
         }
+
+    // add name to DB
+    $stmt = $dbconnect -> prepare("INSERT INTO `author` (`First`, `Middle`, `Last`) VALUES (?, ?, ?);");
+    $stmt -> bind_param("sss", $first, $middle, $last);
+    $stmt -> execute();
+
     } // end name split else
 
-// add name to DB
-$stmt = $dbconnect -> prepare("INSERT INTO `author` (`First`, `Middle`, `Last`) VALUES (?, ?, ?);");
-$stmt -> bind_param("sss", $first, $middle, $last);
+// add quote to DB
+$stmt = $dbconnect -> prepare("INSERT INTO `quotes` (`Author_ID`, `Quote`, `Subject1_ID`, `Subject2_ID`, `Subject3_ID`) VALUES (?, ?, ?, ?, ?);");
+$stmt -> bind_param("isiii", $author_ID, $quote, $subject_ID_1, $subject_ID_2, $subject_ID_3);
 $stmt -> execute();
 
+$quote_ID = $dbconnect -> insert_id;
 
-    } // submit if
+// close stmt once everything has been inserted
+$stmt -> close();
+
+$heading = "Quote Success";
+$sql_conditions = "WHERE `ID` = $quote_ID";
+
+include("content/results.php");
+
+} // submit if
 
 } // end user is logged on if
 

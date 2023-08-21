@@ -5,9 +5,15 @@ if (isset($_SESSION['admin'])) {
 // retrieve subjects and authors to populate combo box
 include("sub_author.php");
 
-?>
+// retrieve current values for quote
+$ID = $_REQUEST['ID'];
 
-<h2>Add Quote</h2>
+// get values from DB
+$edit_query = get_data($dbconnect, "WHERE q.ID = $ID");
+
+$edit_results_query = $edit_query[0];
+
+?>
 
 <div class="admin-form">
     <h1>Add a Quote</h1>
