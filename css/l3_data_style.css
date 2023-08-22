@@ -114,6 +114,16 @@ h1, h2, h3, h4 {
     font-family: 'Ubuntu', sans-serif;
 }
 
+.important {
+    background-color: #ffb6b6;
+    padding: 10px;
+}
+
+.light_blue {
+    background-color: lightskyblue;
+    padding: 10px;
+}
+
 .results {
     background-color: #fff;
     border: 1px solid #d68b00;

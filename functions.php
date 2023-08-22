@@ -88,4 +88,11 @@ function get_search_ID($dbconnect, $search_term) {
 
 }
 
+// delete ghost authors
+function delete_ghost($dbconnect, $authorID) {
+
+	// see if there are other quotes by that author
+	$check_author_sql = "SELECT * FROM `quotes` WHERE `Author_ID` = $authorID"
+}
+
 ?>
