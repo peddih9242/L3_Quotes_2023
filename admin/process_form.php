@@ -92,6 +92,8 @@
     $stmt -> bind_param("sss", $first, $middle, $last);
     $stmt -> execute();
 
+    $stmt -> close();
+
     } // end name split else
 
 ?>
