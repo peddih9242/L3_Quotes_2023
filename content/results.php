@@ -34,6 +34,23 @@ elseif ($heading_type == "subject") {
     $heading = "<h2>$title_subject Quotes ($find_count $result_s)</h2>";
 }
 
+elseif ($heading_type == "quote_success") {
+    $heading = "<h2>Insert Quote Success</h2>
+    <p>You have inserted the following quote...</p>";
+}
+
+elseif ($heading_type == "edit_success") {
+    $heading = "<h2>Edit Quote Sucess</h2>
+    <p>You have edited the quote. The entry is now...</p>";
+}
+
+elseif ($heading_type == "delete_quote") {
+    $heading = "<h2>Delete Quote - Are you sure?</h2>
+    <p>
+    Do you really want to delete the quote in the box below?
+    </p>";
+}
+
 echo $heading;
 
 while($find_rs = mysqli_fetch_assoc($find_query)) {
@@ -76,7 +93,7 @@ while($find_rs = mysqli_fetch_assoc($find_query)) {
             // check if subject is n/a
             if($subject != "n/a") {
                 ?>
-                <span class="tag">
+                <span class="tag subject-tag">
                     <a href="index.php?page=all_results&search=subject&subject_name=<?php echo $subject ?>">
                         <?php echo $subject ?>
                     </a>

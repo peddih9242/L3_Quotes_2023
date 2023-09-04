@@ -27,7 +27,8 @@ $stmt -> execute();
 // close stmt once everything has been inserted
 $stmt -> close();
 
-$heading = "Edit Success";
+$heading = "";
+$heading_type = "edit_success";
 $sql_conditions = "WHERE `ID` = $quote_ID";
 
 include("content/results.php");

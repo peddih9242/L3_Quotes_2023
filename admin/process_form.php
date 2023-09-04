@@ -92,6 +92,8 @@
     $stmt -> bind_param("sss", $first, $middle, $last);
     $stmt -> execute();
 
+    $author_ID = $dbconnect -> insert_id;
+
     $stmt -> close();
 
     } // end name split else

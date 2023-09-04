@@ -135,12 +135,19 @@ h1, h2, h3, h4 {
 }
 
 .tag {
-    background-color: bisque;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
     border: solid 1px #000;
     border-radius: 5px;
+}
+
+.subject-tag {
+    background-color: bisque;
+}
+
+.white-tag {
+
 }
 
 .sub_heading {

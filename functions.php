@@ -100,7 +100,7 @@ function delete_ghost($dbconnect, $authorID) {
 	// if there are no quotes associated with the old author,
 	// we can delete the old author
 	if ($count_author <= 1) {
-		$delete_ghost = "DELETE FROM `author` WHERE `author`.`Author_ID` = $author_ID";
+		$delete_ghost = "DELETE FROM `author` WHERE `author`.`Author_ID` = $authorID";
 		$delete_ghost_query = mysqli_query($dbconnect, $delete_ghost);
 	}
 }
